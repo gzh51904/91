@@ -10,7 +10,7 @@ import Discover from '../pages/Discover.vue';
 import Mine from '../pages/Mine.vue';
 
 
-// sad 
+// sad dsdadasdad dasd ada as
 
 
 
