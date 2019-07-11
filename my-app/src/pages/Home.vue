@@ -7,7 +7,9 @@
 
 import Vue from 'vue';
 
- export default {};
+ export default {
+     
+ };
 </script>
 <style>
 </style>

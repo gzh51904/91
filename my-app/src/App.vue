@@ -3,11 +3,11 @@
     <div class="main">
       <router-view/>
     </div>
-    <div class="footer">
+    <div class="footer" v-if='tor'>
       <div v-for="item in pages" :key="item.mame" :index="item.path" @click='ass(item)'>
         <img :src="item.img1" style="width: 24px; height: 24px;" v-if="item.res" />
         <img :src="item.img2" style="width: 24px; height: 24px;" v-else />
-        <span style="font-size: 12px;color: #ccc;  " >
+        <span style="font-size: 12px;color:#ccc;  " >
           <router-link :to='item.path'>{{item.title}}</router-link></span>
       </div>
     </div>
@@ -16,6 +16,7 @@
 
 <script>
 import Vue from "vue";
+import { log } from 'util';
 
 // import{Tabs,TabPane} from "element-ui";
 // Vue.use(Tabs);
@@ -56,24 +57,68 @@ export default {
       ],
       active: "/home",
        activeName: 'second',
+       tor:true,
+       ress:[
+         "/home",'/discover','/mine'
+       ]
     };
    
   },
   methods: {
     
     ass(item) {
-      item.res=!item.res;
+      item.res=!item.res; 
+      //  console.log(this.$store.state);
+      //  console.log(this.tor);
+
+       
     },
      handleClick(tab, event) {
         // console.log(tab, event);
-      }
+      },
+    creattd(){
+      //  console.log('当前url路径:'+this.$route.path);
+      //  this.tor=this.$store.state.tor
+      //  console.log(this.tor);
+       
+    },
+    mounted(){
+// console.log('我刚进来');
+this.$store.commit('add2')
+//获取当前url路径
+
+   
+},updated(){
+    // console.log('当前url路径:'+this.$route.path);
+  },
+
+
+     
     
   },
+  
   components: {},
+  watch:{
+  $route(to,from){
+    // console.log(to.path);
+    // console.log(this.ress);
+    if(this.ress.includes(to.path)){
+        this.tor=true
+    }else{
+      this.tor=false
+    }
+    
+  }
+},
+
+  
+
 };
 </script>
 
-<style ass>
+
+<style scoped>
+/* scoped局部样式 */
 * {
   padding: 0;
   margin: 0;
@@ -86,13 +131,17 @@ export default {
 }
 .main {
   width: 100%;
-  flex: 1;height: 600px;
+  flex: 1;height: 100%;
 }
 .footer {
   width: 100%;
   height: 55px;
   display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;box-sizing: border-box;
   justify-content: space-around;
+  border-top: 1px solid rgb(231, 230, 230);
 }
 .footer > div {
   height: 100%;
@@ -101,7 +150,7 @@ export default {
 }
 .footer > div> span {
   width: 100%;
-  display: block;
+  display: block;color: #ccc;
 }
 .footer > div> img{
   margin-top: 3px;
