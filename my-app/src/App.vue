@@ -1,14 +1,15 @@
 <template>
   <div class="app">
     <div class="main">
-      <router-view/>
+      <router-view />
     </div>
     <div class="footer">
-      <div v-for="item in pages" :key="item.mame" :index="item.path" @click='ass(item)'>
+      <div v-for="item in pages" :key="item.mame" :index="item.path" @click="ass(item)">
         <img :src="item.img1" style="width: 24px; height: 24px;" v-if="item.res" />
         <img :src="item.img2" style="width: 24px; height: 24px;" v-else />
-        <span style="font-size: 12px;color: #ccc;  " >
-          <router-link :to='item.path'>{{item.title}}</router-link></span>
+        <span style="font-size: 12px;color: #ccc;  ">
+          <router-link :to="item.path">{{item.title}}</router-link>
+        </span>
       </div>
     </div>
   </div>
@@ -33,7 +34,7 @@ export default {
           img1: require("./assets/img/a1.png"),
           img2: require("./assets/img/a11.png"),
           res: "true",
-          clear:'#5cbc20'
+          clear: "#5cbc20"
         },
         {
           title: "学习",
@@ -42,7 +43,7 @@ export default {
           img1: require("./assets/img/a3.png"),
           img2: require("./assets/img/a33.png"),
           res: "true",
-          clear:'#5cbc20'
+          clear: "#5cbc20"
         },
         {
           title: "我的",
@@ -51,25 +52,22 @@ export default {
           img1: require("./assets/img/a2.png"),
           img2: require("./assets/img/a22.png"),
           res: "true",
-          clear:'#5cbc20'
+          clear: "#5cbc20"
         }
       ],
       active: "/home",
-       activeName: 'second',
+      activeName: "second"
     };
-   
   },
   methods: {
-    
     ass(item) {
-      item.res=!item.res;
+      item.res = !item.res;
     },
-     handleClick(tab, event) {
-        // console.log(tab, event);
-      }
-    
+    handleClick(tab, event) {
+      // console.log(tab, event);
+    }
   },
-  components: {},
+  components: {}
 };
 </script>
 
@@ -86,24 +84,29 @@ export default {
 }
 .main {
   width: 100%;
-  flex: 1;height: 600px;
+  flex: 1;
+  /* height: 600px; */
 }
 .footer {
   width: 100%;
   height: 55px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
   display: flex;
   justify-content: space-around;
 }
 .footer > div {
   height: 100%;
-  width: 100%;background: #ffffff;
+  width: 100%;
+  background: #ffffff;
   text-align: center;
 }
-.footer > div> span {
+.footer > div > span {
   width: 100%;
   display: block;
 }
-.footer > div> img{
+.footer > div > img {
   margin-top: 3px;
 }
 </style>
