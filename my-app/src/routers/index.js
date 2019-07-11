@@ -9,10 +9,12 @@ import Home from '../pages/Home.vue';
 import Discover from '../pages/Discover.vue';
 import Mine from '../pages/Mine.vue';
 
-
-
-// import axios from 'axios';
-
+import Goods from '../pages/Goods.vue';
+import Stats from '../pages/Stats.vue';
+import Mas from '../pages/Mas.vue';
+import Tus from '../pages/Tus.vue';
+// sad dsdadasdad dasd ada as Meiri
+import Meiri from '../pages/Meiri.vue';
 
 
 // 3. 实例化router并配置参数
@@ -28,6 +30,10 @@ let router = new VueRouter({
             name: 'Discover',
             path: '/discover',
             component: Discover,
+            //子路由
+            children:[
+               
+            ]
         },
         {
             name: 'Mine',
@@ -37,8 +43,33 @@ let router = new VueRouter({
         }, {
             //重定向
             path: '/',
-            // redirect:{name:'Home'}
-          }]
+            redirect:{name:'Home'}
+          },
+          {
+              //Discover下的子路由
+            name: 'Goods',
+            path: '/goods',
+            component: Goods,
+           },{//Discover下的子路由
+            name: 'Stats',
+            path: '/stats',
+            component: Stats, 
+           },
+           ,{//Discover下的子路由
+            name: 'Mas',
+            path: '/mas',
+            component: Mas, 
+           },
+           ,{//Discover下的子路由
+            name: 'Tus',
+            path: '/tus',
+            component: Tus, 
+           },{//Goods下的子路由
+            name: 'Meiri',
+            path: '/meiri',
+            component: Meiri, 
+           }
+        ]
 });
 
 
