@@ -16,6 +16,7 @@
 
 <script>
 import Vue from "vue";
+import Mine from './pages/Mine.vue';
 
 // import{Tabs,TabPane} from "element-ui";
 // Vue.use(Tabs);
@@ -69,7 +70,9 @@ export default {
       }
     
   },
-  components: {},
+  components: {
+		Mine
+	},
 };
 </script>
 
@@ -93,6 +96,9 @@ export default {
   height: 55px;
   display: flex;
   justify-content: space-around;
+	position: fixed;
+	left: 0;
+	bottom: 0;
 }
 .footer > div {
   height: 100%;
