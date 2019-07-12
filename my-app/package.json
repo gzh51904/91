@@ -12,8 +12,8 @@
     "element-ui": "^2.10.1",
     "save": "^2.4.0",
     "vue": "^2.6.10",
-    "vue-router": "file:src/vue-router",
-    "vuex": "^3.0.1"
+    "vue-router": "file:vue-router",
+    "vuex": "^3.1.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.0",

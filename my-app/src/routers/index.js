@@ -14,9 +14,12 @@ import Stats from '../pages/Stats.vue';
 import Mas from '../pages/Mas.vue';
 import Tus from '../pages/Tus.vue';
 // sad dsdadasdad dasd ada as Meiri
-import Meiri from '../pages/Meiri.vue';
+import Meiri from '../pages/Meiri.vue'; 
+import List from '../pages/List.vue';
 
 
+import Sale from '../pages/Sale.vue';
+// import Allfilx from '../pages/Allfilx.vue';
 // 3. 实例化router并配置参数
 let router = new VueRouter({
     // 路由页面信息配置
@@ -68,7 +71,23 @@ let router = new VueRouter({
             name: 'Meiri',
             path: '/meiri',
             component: Meiri, 
+           },
+           {//首页》公开课跳转
+            name: 'List',
+            path: '/list',
+            component: List, 
+           },
+           {//暑秋》公开课跳转
+            name: 'Sale',
+            path: '/sale',
+            component:Sale, 
            }
+        //       {//公开课下二级导航
+        //         name: 'Allfilx',
+        //         path: '/allfilx',
+        //         component:Allfilx, 
+        //        }
+          
         ]
 });
 

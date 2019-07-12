@@ -55,7 +55,8 @@ export default {
 }
 .h2{display: inline-block;width: calc(100% - 50px);
 height: 100%;
-    font-size: 18px;float: left;
+    font-size: 18px;
+    float: left;
 }
 .ss{
     text-align: center;

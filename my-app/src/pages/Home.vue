@@ -25,9 +25,9 @@
     </div>
 
     <div class="course_tab">
-        <a href="#" class="course_f"></a>
-        <a href="#" class="course_p"></a>
-        <a href="#" class="course_o"></a>
+        <a href="#" class="course_f" @click="tosale"></a>
+        <a href="#" class="course_p" @click="toall"></a>
+        <a href="#" class="course_o" @click="toall"></a>
     </div>
     <div class="tab_class">
         <div class="swiper-wrapper" style="height:43.98px;">
@@ -58,7 +58,7 @@
     </div>
     <div class="swiper-wrapper" style="height:1583px" >
       <div class="swiper-slide swiper-slide-active" style="width:375px;">
-        <div v-for="item in pag">
+        <div v-for="item in pag"  @click="tosale" :key="item.id">
           <div class="course_li">
             <div class="title">
               <span class="season summer">{{item.vacation}}</span>
@@ -146,42 +146,49 @@ export default {
          
           pag:[
             {
+              id:1,
               vacation:'暑期',
               language:'语文',
               title:'三年级语文暑期课直播班',
               price:1389,
               decimals:5
             },{
+              id:2,
               vacation:'暑期',
               language:'数学',
               title:'四年级数学暑期课直播班',
               price:1111,
               decimals:0
             },{
+              id:3,
               vacation:'暑期',
               language:'英语',
               title:'五年级数学暑期课直播班',
               price:49,
               decimals:0
             },{
+              id:4,
               vacation:'暑期',
               language:'数学',
               title:'初一数学暑期课直播班',
               price:49,
               decimals:0
             },{
+              id:5,
               vacation:'暑期',
               language:'物理',
               title:'初二数学暑期课直播班',
               price:1596,
               decimals:0
             },{
+              id:6,
               vacation:'暑期',
               language:'化学',
               title:'初三化学暑期课直播班',
               price:1596,
               decimals:0
             },{
+              id:6,
               vacation:'秋季',
               language:'语文',
               title:'五年级语文秋季课直播班',
@@ -189,54 +196,63 @@ export default {
               decimals:38
 
             },{
+              id:8,
               vacation:'秋季',
               language:'数学',
               title:'六年级数学秋季课直播班',
               price:2315,
               decimals:63
             },{
+              id:9,
               vacation:'秋季',
               language:'英语',
               title:'四年级英语暑期课直播班',
               price:2315,
               decimals:63
             },{
+              id:10,
               vacation:'暑期',
               language:'语文',
               title:'四年级语文暑期课直播班',
               price:1389,
               decimals:38
             },{
+              id:11,
               vacation:'暑期',
               language:'语文',
               title:'五年级语文暑期课直播班',
               price:931,
               decimals:0
             },{
+              id:12,
               vacation:'暑期',
               language:'语文',
               title:'六年级语文暑期课直播班',
               price:931,
               decimals:0
             },{
+              id:13,
               vacation:'暑期',
               language:'数学',
               title:'二年级数学暑期课直播班',
               price:1040,
               decimals:0
             },{
+              id:14,
               vacation:'暑期',
               language:'语文',
               title:'四年级语文暑期课直播班',
               price:1389,
               decimals:38
             },{
+              id:15,
              vacation:'暑期',
               language:'语文',
               title:'五年级语文暑期课直播班',
               price:931,
               decimals:0
             },{
+              id:16,
               vacation:'暑期',
               language:'数学',
               title:'高一数学暑期课直播班',
@@ -250,7 +266,14 @@ export default {
     methods:{
         handleSelect(index,indexPath){
           this.active = index
+        },
+        toall(){
+           this.$router.push('/list');
+        },
+      tosale(){
+           this.$router.push('/sale');
         }
+        
     },
     components:{}
 

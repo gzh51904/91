@@ -11,11 +11,9 @@
             <div @click.stop="active='allclass' ;chang()">
                 全部年级<span class="list-header-span"></span>
             </div>
-           <div @click.stop="active='allfilx' ;chang()">
+       
+          <div @click.stop="active='allfilx' ;chang()">
                全部学科<span class="list-header-span"></span>
-           </div>
-          <div @click.stop="active='allxueqi' ;chang()">
-               全部学期<span class="list-header-span"></span>
            </div>
            </div>
          
@@ -182,25 +180,7 @@ export default {
                        <div class="classlist">化学</div>
                        </div>`
            
-       },
-             allxueqi:{
-           data(){
-               return{
-                 
-               }
-           },
-        
-            template:`<div>
-                      <div class="classlist">全部学期</div>
-                       <div class="classlist">暑期课</div>
-                       <div class="classlist">秋季课</div>
-                       <div class="classlist">寒假课</div>
-                       <div class="classlist">春秋课</div>
-                      
-                       </div>  `
-           
-         
-           },
+       }
   },
   created() {
 
@@ -264,7 +244,8 @@ export default {
      position: fixed;
      padding: 20px;
      box-sizing: border-box;
- z-index:9999;
+     z-index: 9999;
+ 
 
  
 }
