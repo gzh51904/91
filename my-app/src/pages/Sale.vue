@@ -5,21 +5,36 @@
     
        <div class="list-header">
           
+<<<<<<< HEAD
            <div class="list-header-name"> <img :src="img.img" alt="" class="back" @click="back1()">专题课</div>
+=======
+           <div class="list-header-name"> <img :src="img.img" alt="" class="back" @click="back()">专题课</div>
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
            
            <div class="list-header-classname">
             <div @click.stop="active='allclass' ;chang()">
                 全部年级<span class="list-header-span"></span>
             </div>
+<<<<<<< HEAD
            <div @click.stop="active='allfilx' ;chang()">
                全部学科<span class="list-header-span"></span>
            </div>
           
+=======
+       
+          <div @click.stop="active='allfilx' ;chang()">
+               全部学科<span class="list-header-span"></span>
+           </div>
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
            </div>
          
          
        </div>
+<<<<<<< HEAD
         <div class="twonav" v-show="show1"><component :is="active"/></div>
+=======
+        <div class="twonav" v-show="show"><component :is="active"/></div>
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
 
 
 
@@ -35,7 +50,11 @@
                    <span class="list-main-name">各种各样发布会</span>
                    </div>
             
+<<<<<<< HEAD
                   <div class="list-main-starttime"> <img :src="img.img1" alt="" class="list-shizhong">2019-3 晚XXX点</div>
+=======
+                  <div class="list-main-starttime">2019-3 晚XXX点</div>
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
                  <div class="list-main-specialoffer">特价课</div>
                   
              
@@ -123,10 +142,16 @@ export default {
     // compon:''
     active:'',
     isamint:false,
+<<<<<<< HEAD
     show1:false,
     img:{
             img:require("../assets/img/jaintouzuo.png"),
             img1:require("../assets/img/time.png.png")
+=======
+    show:false,
+    img:{
+            img:require("../assets/img/jaintouzuo.png"),
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
           
         }   
       
@@ -136,10 +161,17 @@ export default {
   methods:{
     chang(){
         // this.isamint = !this.isamint
+<<<<<<< HEAD
         this.show1 = !this.show1
 
     },
     back1(){
+=======
+        this.show = !this.show
+
+    },
+    back(){
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
         this.$router.push('/home');
     }
   },
@@ -245,7 +277,12 @@ export default {
      position: fixed;
      padding: 20px;
      box-sizing: border-box;
+<<<<<<< HEAD
  z-index:9999;
+=======
+     z-index: 9999;
+ 
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
 
  
 }
@@ -303,12 +340,20 @@ border-bottom:  5px solid transparent;
 /*     */
 .list-main {
     margin-top: 100px;
+<<<<<<< HEAD
   padding: 2%;
+=======
+  padding: 4%;
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
  
   box-sizing: border-box;
   width: 100%;
   height: 1700px;
+<<<<<<< HEAD
   background: rgb(247, 243, 243);
+=======
+  background: #ccc;
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
 }
 .list-main-outaide{
     background: #ffffff;
@@ -316,11 +361,19 @@ border-bottom:  5px solid transparent;
 }
 .list-main-content {
   width: 100%;
+<<<<<<< HEAD
   padding: 4%;
   box-sizing: border-box;
   /* font-size: 20px;
   line-height: 30px; */
   margin-top: 10px;
+=======
+  padding: 6%;
+  box-sizing: border-box;
+  /* font-size: 20px;
+  line-height: 30px; */
+  margin-top: 20px;
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
 
 
 }
@@ -333,13 +386,18 @@ border-bottom:  5px solid transparent;
     display: inline-block;
    background: greenyellow;
    color: #ffffff;
+<<<<<<< HEAD
 font-size: 14px;
+=======
+font-size: 16px;
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
 margin-right: 5px;
  padding: 0 5px;
 }
 .list-main-project{
     display: inline-block;
     border: 1px solid greenyellow;
+<<<<<<< HEAD
  font-size: 14px;
  color: greenyellow;
  text-align: center;
@@ -363,6 +421,25 @@ height: 18px;
     height: 16px;
 
     line-height: 16px;
+=======
+ font-size: 16px;
+ color: greenyellow;
+ margin-right: 5px;
+ padding: 0 5px;
+}
+.list-main-name{
+    font-size: 20px;
+    font-weight: bolder;
+    line-height: 30px;
+}
+
+.list-main-starttime{
+    color:#cccc;
+    font-size: 14px;
+    height: 30px;
+
+    line-height: 30px;
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
     margin-bottom: 10px;
 }
 
@@ -370,9 +447,15 @@ height: 18px;
     background:orange;
     padding:0 10px;
     color:#ffffff;
+<<<<<<< HEAD
     font-size:16px;
     line-height: 20px;
     height: 20px;
+=======
+    font-size:18px;
+    line-height: 30px;
+    height: 30px;
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
     width: 80px;
     margin-bottom: 20px;
     border-radius:10px;
@@ -388,6 +471,7 @@ height: 18px;
 
 }
 .list-main-memberlist{
+<<<<<<< HEAD
     width: 50px;
     height: 90px;
   display:flex;
@@ -395,35 +479,62 @@ height: 18px;
   justify-content: space-between;
     margin-right: 10px;
     margin-bottom: 10px;
+=======
+    width: 100px;
+    height: 150px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+    margin-right: 20px;
+    margin-bottom: 20px;
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
     /* baijing
     background: #cccccc; */
     align-items: center;
     position: relative;
 }
 .list-main-memberlist img{
+<<<<<<< HEAD
 width: 50px;
 height: 50px;
+=======
+width: 80px;
+height: 80px;
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
 /*beijing*/
 background: orange;
 border-radius: 50%;
 }
 .list-main-memberlist>span{
+<<<<<<< HEAD
 font-size: 14px;
 line-height: 14px;
 }
 .list-main-memberlist-job{
 color:#ccc;
 font-size: 12px;
+=======
+font-size: 18px;
+line-height: 18px;
+}
+.list-main-memberlist-job{
+color:#ccc;
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
 }
 .ming-e{
     background:rgba(35, 248, 46, 0.2);
  
+<<<<<<< HEAD
     height: 18px;
+=======
+    height: 30px;
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
    /* padding-left: 8px;
     box-sizing: border-box;
      */
      text-align: center;
     position:absolute;
+<<<<<<< HEAD
     top:-15px;
     left: 40px;
     border-radius: 10px 10px 10px 0;
@@ -431,6 +542,15 @@ font-size: 12px;
     /* display:flex; */
     width: 80px;
     line-height: 18px;
+=======
+    top:-25px;
+    left: 70px;
+    border-radius: 10px 10px 10px 0;
+    font-size: 14px;
+    /* display:flex; */
+    width: 80px;
+    line-height: 30px;
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
     color: rgba(0,200,2,.9);
 
 }
@@ -450,10 +570,17 @@ font-size: 12px;
 
 }
 .list-main-endtime{
+<<<<<<< HEAD
     height: 18px;
     background: #cccc;
     border-radius: 10px;
     font-size: 14px;
+=======
+    height: 30px;
+    background: #cccc;
+    border-radius: 10px;
+    font-size: 18px;
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
     padding-left: 10px;
     padding-right: 10px;
      margin-right: 20px;

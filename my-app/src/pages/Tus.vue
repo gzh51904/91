@@ -61,8 +61,14 @@ export default {
     width: 15px;height: 24px;float: left;margin-top:13px;margin-left: 10px;
 }
 .h2{display: inline-block;width: calc(100% - 50px);
+<<<<<<< HEAD
 height: 100%;line-height: 50px;
     font-size: 18px;float: left;
+=======
+height: 100%;
+    font-size: 18px;
+    float: left;
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
 }
 .ss{
     text-align: center;

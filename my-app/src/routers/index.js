@@ -14,10 +14,15 @@ import Stats from '../pages/Stats.vue';
 import Mas from '../pages/Mas.vue';
 import Tus from '../pages/Tus.vue';
 // sad dsdadasdad dasd ada as Meiri
+<<<<<<< HEAD
 import Meiri from '../pages/Meiri.vue';
 import Gongkai from '../pages/Gongkai.vue';
 import List from '../pages/List.vue';
 import Sale from '../pages/Sale.vue';
+=======
+import Meiri from '../pages/Meiri.vue'; 
+import List from '../pages/List.vue';
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
 
 import Xinxi from '../pages/Xinxi.vue';
 import Gouwu from '../pages/Gouwu.vue';
@@ -30,6 +35,8 @@ import Soso from '../pages/Soso.vue';
 import Login from '../pages/Login.vue';
 import Register from '../pages/Register.vue';
 
+import Sale from '../pages/Sale.vue';
+// import Allfilx from '../pages/Allfilx.vue';
 // 3. 实例化router并配置参数
 let router = new VueRouter({
     // 路由页面信息配置
@@ -99,6 +106,7 @@ let router = new VueRouter({
             path: '/meiri',
             component: Meiri, 
            },
+<<<<<<< HEAD
 
 
            //home下的子路由
@@ -153,6 +161,24 @@ let router = new VueRouter({
             path: '/soso',
             component: Soso, 
            },
+=======
+           {//首页》公开课跳转
+            name: 'List',
+            path: '/list',
+            component: List, 
+           },
+           {//暑秋》公开课跳转
+            name: 'Sale',
+            path: '/sale',
+            component:Sale, 
+           }
+        //       {//公开课下二级导航
+        //         name: 'Allfilx',
+        //         path: '/allfilx',
+        //         component:Allfilx, 
+        //        }
+          
+>>>>>>> 5d0a38375911066832667706b02dbaa4179082d7
         ]
 });
 //全局路由守卫
