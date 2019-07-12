@@ -3,7 +3,7 @@
     <div class="main">
       <router-view/>
     </div>
-    <div class="footer" v-if='tor'>
+    <div class="footer" v-show='tor'>
       <div v-for="item in pages" :key="item.mame" :index="item.path" @click='ass(item)'>
         <img :src="item.img1" style="width: 24px; height: 24px;" v-if="item.res" />
         <img :src="item.img2" style="width: 24px; height: 24px;" v-else />
@@ -34,7 +34,8 @@ export default {
           img1: require("./assets/img/a1.png"),
           img2: require("./assets/img/a11.png"),
           res: "true",
-          clear:'#5cbc20'
+          clear:'#5cbc20',
+          ff:'1'
         },
         {
           title: "学习",
@@ -43,7 +44,8 @@ export default {
           img1: require("./assets/img/a3.png"),
           img2: require("./assets/img/a33.png"),
           res: "true",
-          clear:'#5cbc20'
+          clear:'#5cbc20',
+          ff:'2'
         },
         {
           title: "我的",
@@ -52,12 +54,13 @@ export default {
           img1: require("./assets/img/a2.png"),
           img2: require("./assets/img/a22.png"),
           res: "true",
-          clear:'#5cbc20'
+          clear:'#5cbc20',
+          ff:'3'
         }
       ],
       active: "/home",
        activeName: 'second',
-       tor:true,
+       tor:!false,
        ress:[
          "/home",'/discover','/mine'
        ]
@@ -67,7 +70,24 @@ export default {
   methods: {
     
     ass(item) {
-      item.res=!item.res; 
+      // this.pages.res=!this.pages.res
+      // item.res=!item.res; 
+      // console.log(item,this.pages[0].res);
+      if(item.ff==1){
+        this.pages[0].res=false;
+        this.pages[1].res=true;
+        this.pages[2].res=true;
+      }else if(item.ff==2){
+         this.pages[0].res=true;
+        this.pages[1].res=false;
+        this.pages[2].res=true;
+      }else{
+         this.pages[0].res=true;
+        this.pages[1].res=true;
+        this.pages[2].res=false;
+      }
+      // console.log(item.res);
+      
       //  console.log(this.$store.state);
       //  console.log(this.tor);
 
@@ -83,8 +103,9 @@ export default {
        
     },
     mounted(){
+      
 // console.log('我刚进来');
-this.$store.commit('add2')
+// this.$store.commit('add2')
 //获取当前url路径
 
    

@@ -2,8 +2,10 @@
    <div class="shij">
         <div class="sfa"><img :src="img.img1" @click='tiao'>
             <h2 class="h2">课程日历</h2></div>
-    <el-calendar v-model="value"  >
-</el-calendar>
+<div class="ssd"></div>
+  <el-calendar v-model="value"></el-calendar>
+
+
   <div class="boxs"><img :src="img.img8" >
          <span>没有直播课程</span></div>
    </div>
@@ -40,6 +42,7 @@ export default {
 </script>
 
 <style scoped>
+/* \scoped */
 *{
     margin: 0;padding: 0;
 }
@@ -47,14 +50,18 @@ export default {
     text-align: center;width: 100%;height: 100%;
 }
 .sfa{
-    width: 100%;height: 50px;background: #ffffff;
+    width: 100%;height: 50px;background: #ffffff;position: fixed;top: 0;
+   z-index: 22;
 
+}
+.ssd{
+     width: 100%;height: 50px;
 }
 .sfa>img{
     width: 15px;height: 24px;float: left;margin-top:13px;margin-left: 10px;
 }
 .h2{display: inline-block;width: calc(100% - 50px);
-height: 100%;
+height: 100%;line-height: 50px;
     font-size: 18px;float: left;
 }
 .ss{
@@ -72,4 +79,11 @@ height: 100%;
 .boxs>span{text-align: center;display: block;
     font-size: 16px;width: 100%;
 }
+.current{
+    height: 10px;
+}
+/* .el-calendar-day{
+    height: 50px;
+} */
 </style>
+
