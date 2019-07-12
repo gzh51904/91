@@ -15,7 +15,20 @@ import Mas from '../pages/Mas.vue';
 import Tus from '../pages/Tus.vue';
 // sad dsdadasdad dasd ada as Meiri
 import Meiri from '../pages/Meiri.vue';
+import Gongkai from '../pages/Gongkai.vue';
+import List from '../pages/List.vue';
+import Sale from '../pages/Sale.vue';
 
+import Xinxi from '../pages/Xinxi.vue';
+import Gouwu from '../pages/Gouwu.vue';
+import Fasss from '../pages/Fasss.vue';
+import Rost from '../pages/Rost.vue';
+import Lsay from '../pages/Lsay.vue';
+import Lsaytt from '../pages/Lsaytt.vue';
+import Soso from '../pages/Soso.vue';
+
+import Login from '../pages/Login.vue';
+import Register from '../pages/Register.vue';
 
 // 3. 实例化router并配置参数
 let router = new VueRouter({
@@ -30,17 +43,32 @@ let router = new VueRouter({
             name: 'Discover',
             path: '/discover',
             component: Discover,
-            //子路由
-            children:[
-               
-            ]
+          
+             meta:{requiresAuth:true},
+         
         },
         {
             name: 'Mine',
             path: '/mine',
             component: Mine,
+            meta:{requiresAuth:true},
+            beforeEnter(to,from,next){
+                // console.log('Cart路由独享：beforeEnter')
+                next();
+            }
 
-        }, {
+        },
+        {
+            name:'Register',
+            path:'/register',
+            component:Register,
+        }, 
+        {
+            name:'Login',
+            path:'/login',
+            component:Login
+        },
+         {
             //重定向
             path: '/',
             redirect:{name:'Home'}
@@ -64,13 +92,97 @@ let router = new VueRouter({
             name: 'Tus',
             path: '/tus',
             component: Tus, 
-           },{//Goods下的子路由
+           },
+           
+           {//Goods下的子路由
             name: 'Meiri',
             path: '/meiri',
             component: Meiri, 
-           }
+           },
+
+
+           //home下的子路由
+           {//home下的子路由
+            name: 'Sale',
+            path: '/sale',
+            component: Sale, 
+           },
+            {//home下的子路由
+                name: 'List',
+                path: '/list',
+                component: List, 
+               },
+         {//home下的子路由
+            name: 'Gongkai',
+            path: '/gongkai',
+            component: Gongkai, 
+           },
+     {//Mine下面路由
+    name: 'Xinxi',
+    path: '/xinxi',
+    component: Xinxi, 
+   },
+     {//Mine下面路由
+        name: 'Gouwu',
+        path: '/gouwu',
+        component: Gouwu, 
+       },
+        {//Mine下面路由
+            name: 'Fasss',
+            path: '/fasss',
+            component: Fasss, 
+           },
+          {//Mine下面路由
+            name: 'Rost',
+            path: '/rost',
+            component: Rost, 
+           },  
+             {//Mine下面路由
+                name: 'Lsay',
+                path: '/lsay',
+                component: Lsay, 
+                children:[
+                ]
+               },  
+               {//Lsay
+                    name: 'Lsaytt',
+               path: '/lsaytt',
+               component: Lsaytt, },
+                {//Mine下面路由
+            name: 'Soso',
+            path: '/soso',
+            component: Soso, 
+           },
         ]
 });
+//全局路由守卫
+router.beforeEach((to,from,next)=>{
+    // console.log('全局：beforeEach',to);
+    // 判断目标路由是否需要登录权限才可访问
+    if(to.matched.some(item=>item.meta.requiresAuth)){
+        let username = localStorage.getItem('Authorization');
+
+        // 用户已登录
+        if(username){
+            next();
+        }
+
+        // 用户未登录
+        else{
+            next({
+                path:'/login',
+                query:{
+                    redirectTo:to.fullPath
+                }
+            })
+        }
+    }else{
+        next();
+    }
+})
+router.afterEach((to,from)=>{
+    // console.log('全局：afterEach');
+})
 
 
 

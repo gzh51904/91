@@ -7,13 +7,13 @@
        	<div class="personal">
        		<div class="personalInfo">
        			<img class="per_img" src="../assets/img/image_photo.png" alt="">
-       			<div class="per_rig">
+       			<div class="per_rig" @click='tgtg'>
        				<div class="per_rig_top">
        					<div class="per_rig_top_l">
-       						<span class="chenghao_name">用户称号</span>
+       						<span class="chenghao_name">用户名称</span>
        						<span class="nickName">沉睡的种子</span>
        					</div>
-       					<a><i class="el-icon-arrow-right"></i></a>
+       					<a href="#"><i class="el-icon-arrow-right"></i></a>
        				</div>
        				<div class="per_rig_bt">
        					<div class="glod_num">
@@ -28,36 +28,36 @@
        			</div>
        		</div>
        		<div class="tab">
-       			<a><img src="../assets/img/dingdan.png" alt="">我的订单</a>
-       			<a><img src="../assets/img/image_youhui.png" alt="">优惠券</a>
-       			<a><img src="../assets/img/image_money.png" alt="">我的余额</a>
-       			<a><img src="../assets/img/image_favorite.png" alt="">收藏中心</a>
+       			<div ><img src="../assets/img/dingdan.png" alt="">我的订单</div>
+       			<div @click='soso'><img src="../assets/img/image_youhui.png" alt="">优惠券</div>
+       			<div @click='yue'><img src="../assets/img/image_money.png" alt="">我的余额</div>
+       			<div @click='shoucang'><img src="../assets/img/image_favorite.png" alt="">收藏中心</div>
        		</div>
        	<div class="nav">
        		<div class="navlist">
-       			<a href="">
+       			<div href="#" @click='fsfs'>
        				<p>
        					<i class="el-icon-shopping-cart-2"></i>
        					<span>购物车</span>
        				</p>
        				<i class="el-icon-arrow-right"></i>
-       			</a>
-       			<a href="">
+       			</div>
+       			<div href="#">
        				<p>
        					<i class="el-icon-location-information"></i>
        					<span>地址管理</span>
        				</p>
        				<i class="el-icon-arrow-right"></i>
-       			</a>
-       			<a class="about" href="">
+       			</div>
+       			<div class="about" href="#" @click='banben'>
        				<p>
        					<i class="el-icon-question"></i>
        					<span>关于</span>
        				</p>
        				<i class="el-icon-arrow-right"></i>
-       			</a>
+       			</div>
        		</div>
-       		<div class="logOut">
+       		<div class="logOut" @click='xiaxian'>
        			退出登录
        		</div>
        	</div>
@@ -78,12 +78,39 @@ export default {
 		return {
 			title: '个人中心'
 		};
+	},
+	methods:{
+		tgtg(){
+		 this.$router.push('/xinxi');		
+		},
+		fsfs(){
+			this.$router.push('/gouwu');	
+		},
+		banben(){
+			this.$router.push('/fasss');
+		},
+		shoucang(){
+			this.$router.push('/rost');
+		},
+		yue(){
+			this.$router.push('/lsay');
+		},
+		soso(){
+				this.$router.push('/soso');
+		},
+		xiaxian(){
+    //   this.logined-false;  点击退出登录
+	  localStorage.removeItem('Authorization');
+	  console.log('以下线');
+	  this.$router.push("/login");
+	  
+    }
 	}
 
 }
 </script>
 
-<style>
+<style scoped>
 	
 	*{
 		box-sizing: border-box;
@@ -190,14 +217,14 @@ export default {
 		justify-content: space-around;
 		margin-top:10px;
 	}
-	.tab a{
+	.tab >div{
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
 		font-size: 14px;
 	}
-	.tab a img{
+	.tab >div img{
 		display: inline-block;
 		border:0 none;
 		width: 25px;
@@ -205,7 +232,7 @@ export default {
 	}
 	.nav{
 		/* display: flex; */
-		background:#ccc;
+		background:rgb(248, 244, 244);
 		padding:10px;
 	}
 	.navlist{
@@ -213,7 +240,7 @@ export default {
 		flex-direction:column;
 		margin-bottom:10px;
 	}
-	.navlist>a{
+	.navlist>div{
 		display: flex;
 		cursor: pointer;
 		text-decoration:none;
@@ -238,7 +265,7 @@ export default {
 	  position: absolute;
 	  bottom:65px;
 		border-radius: 10px;
-		background:#ccc;
+		background:rgb(241, 239, 239);
 	}
 
 </style>

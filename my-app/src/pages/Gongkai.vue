@@ -5,19 +5,16 @@
     
        <div class="list-header">
           
-           <div class="list-header-name"> <img :src="img.img" alt="" 
-           class="back" @click="back1()">我的课程</div>
+           <div class="list-header-name"> <img :src="img.img" alt="" class="back" @click="back1()">公开课</div>
            
            <div class="list-header-classname">
-            <div @click="active='allclass' ;chang()">
-                全部课程<span class="list-header-span"></span>
+            <div @click.stop="active='allclass' ;chang()">
+                全部年级<span class="list-header-span"></span>
             </div>
-           <div @click="active='allfilx' ;chang()">
+           <div @click.stop="active='allfilx' ;chang()">
                全部学科<span class="list-header-span"></span>
            </div>
-          <div @click="active='allxueqi' ;chang()">
-               全部学期<span class="list-header-span"></span>
-           </div>
+          
            </div>
          
          
@@ -38,8 +35,7 @@
                    <span class="list-main-name">各种各样发布会</span>
                    </div>
             
-                  <div class="list-main-starttime"> <img :src="img.img1" alt=""
-                   class="list-shizhong">2019-3 晚XXX点</div>
+                  <div class="list-main-starttime"> <img :src="img.img1" alt="" class="list-shizhong">2019-3 晚XXX点</div>
                  <div class="list-main-specialoffer">特价课</div>
                   
              
@@ -131,6 +127,7 @@ export default {
     img:{
             img:require("../assets/img/jaintouzuo.png"),
             img1:require("../assets/img/time.png.png")
+          
         }   
       
     }
@@ -143,7 +140,7 @@ export default {
 
     },
     back1(){
-        this.$router.push('/discover');
+        this.$router.push('/home');
     }
   },
 
@@ -157,11 +154,12 @@ export default {
            },
         
             template:`<div>
-                      <div class="classlist">全部课程</div>
-                       <div class="classlist">未完结</div>
-                       <div class="classlist">已完结</div>
-                       <div class="classlist">已退课</div>
-                     
+                      <div class="classlist">全部年级</div>
+                       <div class="classlist">一年级</div>
+                       <div class="classlist">二年级</div>
+                       <div class="classlist">三年级</div>
+                       <div class="classlist">四年级</div>
+                       <div class="classlist">五年级</div>
                        </div>  `
            
          
@@ -176,38 +174,14 @@ export default {
             },
              template:`<div>
                       <div class="classlist">全部学科</div>
-                     <div class="classlist">语文</div>
+                       <div class="classlist">语文</div>
                        <div class="classlist">数学</div>
                        <div class="classlist">英语</div>
                        <div class="classlist">物理</div>
                        <div class="classlist">化学</div>
-                       <div class="classlist">生物</div>
-                       <div class="classlist">历史</div>
-                       <div class="classlist">地理</div>
-                       <div class="classlist">政治</div>
-                       <div class="classlist">科学</div>
-                      
                        </div>`
            
-       },
-             allxueqi:{
-           data(){
-               return{
-                 
-               }
-           },
-        
-            template:`<div>
-                      <div class="classlist">全部学期</div>
-                       <div class="classlist">暑期课</div>
-                       <div class="classlist">秋季课</div>
-                       <div class="classlist">寒假课</div>
-                       <div class="classlist">春秋课</div>
-                      
-                       </div>  `
-           
-         
-           },
+       }
   },
   created() {
 
@@ -334,7 +308,7 @@ border-bottom:  5px solid transparent;
   box-sizing: border-box;
   width: 100%;
   height: 1700px;
-  background: rgb(243, 239, 239);
+  background: rgb(247, 243, 243);
 }
 .list-main-outaide{
     background: #ffffff;

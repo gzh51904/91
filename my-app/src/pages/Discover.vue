@@ -7,7 +7,7 @@
             <img :src="img.img1" class="img1">
          <div class="box2">
              <div class="box3"><h2>用户名称</h2><span>沉睡的种子</span></div>
-             <div class="box4"><img :src="img.img2" ><span>0</span><img :src="img.img3" ><span>0</span></div>
+             <div class="box4"><img :src="img.img2" ><span>10</span><img :src="img.img3" ><span>10</span></div>
          </div>
         </div>
          <div class="box5">
@@ -16,15 +16,16 @@
              <div @click='res3'><img :src="img.img6"><span>我的作业</span></div>
          </div>
          <div class="box6">
-             <div class="box7"><span>7月10日 共0场直播</span></div>
+             <div class="box7"><span>{{shi1}}月{{shi2}}日 共0场直播 </span></div>
              <div class="box8" @click='res4'><span>课程日历</span><img :src="img.img7" ></div>
          </div>
-         <div class="box9"><img :src="img.img8" >
+         <div class="box9"><img :src="img.img8" @click='shi'>
          <span>没有直播课程</span></div>
     </div>
 </template>
 
 <script>
+import { TimeSelect } from 'element-ui';
 export default {
 data(){
     return{
@@ -37,7 +38,9 @@ data(){
             img6:require("../assets/img/ts3.png"),
             img7:require("../assets/img/jiantou.png"),
             img8:require("../assets/img/tj.png"),
-        }
+        },
+       shi1:new Date().getMonth()+1,
+       shi2:new Date().getDate(),
     }
 },
 methods:{
@@ -52,7 +55,14 @@ methods:{
       },
   res4(){
      this.$router.push('/tus');
-      }
+      },
+   shi(){
+    //    let res1=new Date().getMonth()+1
+    //     let res2=new Date().getDate()
+    //    console.log(res1,res2);
+    //    this.res=res1+'月'+res2+'日'
+       
+   }   
 },
 
 }

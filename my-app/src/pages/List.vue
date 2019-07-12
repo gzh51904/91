@@ -6,11 +6,11 @@
        <div class="list-header">
           
            <div class="list-header-name"> <img :src="img.img" alt="" 
-           class="back" @click="back1()">我的课程</div>
+           class="back" @click="back1()">暑秋专场</div>
            
            <div class="list-header-classname">
             <div @click="active='allclass' ;chang()">
-                全部课程<span class="list-header-span"></span>
+                全部年级<span class="list-header-span"></span>
             </div>
            <div @click="active='allfilx' ;chang()">
                全部学科<span class="list-header-span"></span>
@@ -143,7 +143,7 @@ export default {
 
     },
     back1(){
-        this.$router.push('/discover');
+        this.$router.push('/home');
     }
   },
 
@@ -157,11 +157,12 @@ export default {
            },
         
             template:`<div>
-                      <div class="classlist">全部课程</div>
-                       <div class="classlist">未完结</div>
-                       <div class="classlist">已完结</div>
-                       <div class="classlist">已退课</div>
-                     
+                      <div class="classlist">全部年级</div>
+                       <div class="classlist">一年级</div>
+                       <div class="classlist">二年级</div>
+                       <div class="classlist">三年级</div>
+                       <div class="classlist">四年级</div>
+                       <div class="classlist">五年级</div>
                        </div>  `
            
          
@@ -176,17 +177,11 @@ export default {
             },
              template:`<div>
                       <div class="classlist">全部学科</div>
-                     <div class="classlist">语文</div>
+                       <div class="classlist">语文</div>
                        <div class="classlist">数学</div>
                        <div class="classlist">英语</div>
                        <div class="classlist">物理</div>
                        <div class="classlist">化学</div>
-                       <div class="classlist">生物</div>
-                       <div class="classlist">历史</div>
-                       <div class="classlist">地理</div>
-                       <div class="classlist">政治</div>
-                       <div class="classlist">科学</div>
-                      
                        </div>`
            
        },
