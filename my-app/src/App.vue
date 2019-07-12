@@ -18,10 +18,12 @@
 <script>
 import Vue from "vue";
 
-// import{Tabs,TabPane} from "element-ui";
-// Vue.use(Tabs);
-// Vue.use(TabPane);
-// Vue.use(Tab);
+// import {From,FormItem,Buttom,Input} from "element-ui";
+// Vue.use(From);
+// Vue.use(FormItem);
+// Vue.use(Buttom);
+// Vue.use(Input);
+
 export default {
   name: "app",
   data() {

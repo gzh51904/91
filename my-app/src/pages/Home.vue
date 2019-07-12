@@ -283,14 +283,14 @@ input {
 }
 .pageSearch {
   height: 43.98px;
-  width: 91.5%;
+  width: 100%;
   justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
   background: #fff;
   padding: 0 15.996px;
-  z-index: 1;
+  z-index: 555;
 }
 .searchBox {
   height: 31.98px;
@@ -343,13 +343,13 @@ span {
     height: 89.97px;
 }
 .course_tab .course_p{
-    background: url(../assets/img/open.png) 50% no-repeat;
+    background: url(../assets/img/project.png) 50% no-repeat;
     background-size: contain;
     width: 69.97px;
     height: 89.97px;
 }
 .course_tab .course_o{
-    background: url(../assets/img/project.png) 50% no-repeat;
+    background: url(../assets/img/open.png) 50% no-repeat;
     background-size: contain;
     width: 69.97px;
     height: 89.97px;
