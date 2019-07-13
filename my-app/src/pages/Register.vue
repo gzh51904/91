@@ -112,6 +112,9 @@ export default {
             password: [{ validator: validatePass, trigger: "blur" }],
             checkPass: [{ validator: checkPass, trigger: "blur" }],
             username: [{ validator: validateUsername, trigger: "blur" }]
+          },
+          imgoo:{
+
           }
         };  
     },

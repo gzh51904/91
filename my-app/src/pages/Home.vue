@@ -31,24 +31,6 @@
     </div>
     <div class="tab_class">
         <div class="swiper-wrapper" style="height:43.98px;">
-          <!-- <div class="swiper-slide slide_cur" style="width:56.833px">
-            全部
-          </div>
-          <div class="swiper-slide" style="width:56.833px">
-            语文
-          </div>
-          <div class="swiper-slide" style="width:56.833px">
-            数学
-          </div>
-          <div class="swiper-slide" style="width:56.833px">
-            英语
-          </div>
-          <div class="swiper-slide" style="width:56.833px">
-            物理
-          </div>
-          <div class="swiper-slide" style="width:56.833px">
-            化学
-          </div> -->
           <el-menu :default-active="active" class="el-menu-demo" mode="horizontal" @select="handleSelect">
           <el-menu-item style="width:56.83px;height:43.98px;text-align:center;" :index="item.name" v-for="item in all" :key="item.name">{{item.name}}</el-menu-item>
           

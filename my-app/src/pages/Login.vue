@@ -2,11 +2,11 @@
   <div class="registerWrap">
     <div class="login-warp">
       <header class="mint-header headNav" style="height:43.98px;line-height:43.98px">
-        <div class="mint-header-button is-left">
+        <div class="mint-header-button is-left" v-for="item in tupian">
           <button class="mint-button mint-button-normal">
             <span class="mint-buton-icon">
               <i class="iconfont icon-arrowleft">
-                <img src="../assets/img/zjt.png" alt />
+                <img :src="item.imgurl1" alt />
               </i>
             </span>
           </button>
@@ -19,7 +19,7 @@
         </div>
       </header>
       <div class="reisterLogo">
-        <img src="../assets/img/logo.png" alt />
+        <img :src="tupian[1].imgurl2" />
       </div>
       <div class="formWrap">
         <el-form
@@ -66,6 +66,15 @@ export default {
            
         };
         return{
+            tupian:[
+              {
+                imgurl1:require("../assets/img/zjt.png")
+              },
+              {
+                imgurl2:require("../assets/img/logo.png")
+              }
+            ],
+            // imgo:{ imgurl2:require("../assets/img/logo.png")}
             ruleForm:{
                 username:"",
                 password:"",
@@ -190,6 +199,7 @@ input {
   color: #181818;
   font-weight: 700;
   overflow: hidden;
+  font-size: 15.996px;
   word-spacing: normal;
   text-overflow: ellipsis;
 }
