@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="pageSearch">
-      <div class="searchBox" @click="sou">
+      <div class="searchBox" @click="resssss">
         <i class="icon iconfont icon-search">
-          <img src="../assets/img/ss.png" alt />
+          <img :src="imgss.iimg1" alt />
         </i>
-        <input type="text" placeholder="搜索课程或老师" maxlength="50" />
+        <input type="text" placeholder="搜索课程或老师" maxlength="50"  />
       </div>
 
       <div class="classBox">
-        <i class="icon iconfont icon-grade"><img src="../assets/img/huo.png" alt=""></i>
+        <i class="icon iconfont icon-grade"><img :src="imgss.img2" alt=""></i>
         <span>年级</span>
       </div>
     </div>
@@ -25,14 +25,17 @@
     </div>
 
     <div class="course_tab">
-        <a href="#" class="course_f"></a>
-        <a href="#" class="course_p"></a>
-        <a href="#" class="course_o"></a>
+        <div href="#" class="course_f" @click='tabs1'></div>
+        <div href="#" class="course_p" @click='tabs2'></div>
+        <div href="#" class="course_o" @click='tabs3'></div>
     </div>
     <div class="tab_class">
         <div class="swiper-wrapper" style="height:43.98px;">
-          <el-menu :default-active="active" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-          <el-menu-item style="width:56.83px;height:43.98px;text-align:center;" :index="item.name" v-for="item in all" :key="item.name">{{item.name}}</el-menu-item>
+     
+          <el-menu :default-active="active" class="el-menu-demo" mode="horizontal"
+           @select="handleSelect">
+          <el-menu-item style="width:56.83px;height:43.98px;text-align:center;" :index="item.name" 
+          v-for="item in all" :key="item.name" @click='names(item.name)'>{{item.name}}</el-menu-item>
           
          
         </el-menu>
@@ -40,7 +43,7 @@
     </div>
     <div class="swiper-wrapper" style="height:1583px" >
       <div class="swiper-slide swiper-slide-active" style="width:375px;">
-        <div v-for="item in pag">
+        <div v-for="item in pag2" @click='tabs1' :key="item.id">
           <div class="course_li">
             <div class="title">
               <span class="season summer">{{item.vacation}}</span>
@@ -65,10 +68,15 @@ Vue.use(Carousel);
 Vue.use(CarouselItem);
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import { log } from 'util';
 Vue.use(ElementUI);
 export default {
     data(){
         return{
+          imgss:{
+            img1: require('../assets/img/ss.png'),
+               img2: require('../assets/img/huo.png'),
+          },
           tp:[
             {
               img: require("../assets/img/banner1.png"),
@@ -88,7 +96,8 @@ export default {
           ],
           all:[
                  {
-                    name:'全部'
+                    name:'全部',
+                  
                    
                 },{
                     name:'语文'
@@ -126,118 +135,55 @@ export default {
                 }
           ],
          
-          pag:[
-            {
-              vacation:'暑期',
-              language:'语文',
-              title:'三年级语文暑期课直播班',
-              price:1389,
-              decimals:5
-            },{
-              vacation:'暑期',
-              language:'数学',
-              title:'四年级数学暑期课直播班',
-              price:1111,
-              decimals:0
-            },{
-              vacation:'暑期',
-              language:'英语',
-              title:'五年级数学暑期课直播班',
-              price:49,
-              decimals:0
-            },{
-              vacation:'暑期',
-              language:'数学',
-              title:'初一数学暑期课直播班',
-              price:49,
-              decimals:0
-            },{
-              vacation:'暑期',
-              language:'物理',
-              title:'初二数学暑期课直播班',
-              price:1596,
-              decimals:0
-            },{
-              vacation:'暑期',
-              language:'化学',
-              title:'初三化学暑期课直播班',
-              price:1596,
-              decimals:0
-            },{
-              vacation:'秋季',
-              language:'语文',
-              title:'五年级语文秋季课直播班',
-              price:1389,
-              decimals:38
-
-            },{
-              vacation:'秋季',
-              language:'数学',
-              title:'六年级数学秋季课直播班',
-              price:2315,
-              decimals:63
-            },{
-              vacation:'秋季',
-              language:'英语',
-              title:'四年级英语暑期课直播班',
-              price:2315,
-              decimals:63
-            },{
-              vacation:'暑期',
-              language:'语文',
-              title:'四年级语文暑期课直播班',
-              price:1389,
-              decimals:38
-            },{
-              vacation:'暑期',
-              language:'语文',
-              title:'五年级语文暑期课直播班',
-              price:931,
-              decimals:0
-            },{
-              vacation:'暑期',
-              language:'语文',
-              title:'六年级语文暑期课直播班',
-              price:931,
-              decimals:0
-            },{
-              vacation:'暑期',
-              language:'数学',
-              title:'二年级数学暑期课直播班',
-              price:1040,
-              decimals:0
-            },{
-              vacation:'暑期',
-              language:'语文',
-              title:'四年级语文暑期课直播班',
-              price:1389,
-              decimals:38
-            },{
-             vacation:'暑期',
-              language:'语文',
-              title:'五年级语文暑期课直播班',
-              price:931,
-              decimals:0
-            },{
-              vacation:'暑期',
-              language:'数学',
-              title:'高一数学暑期课直播班',
-              price:99,
-              decimals:0
-            },
-          ],
-           active:"name"
+        
+           active:"name",
+           pag1:[],
+           pag2:[],
         }
     },
     methods:{
         handleSelect(index,indexPath){
           this.active = index
         },
-        sou(){
-          this.$router.replace('/input')
-        }
+        resssss(){ this.$router.push('/input');},
+        tabs1(){
+ this.$router.push('/list');      
+        },
+        tabs2(){
+ this.$router.push('/gongkai');      
+        },
+        tabs3(){
+ this.$router.push('/sale');     
+        },
+     names(namest){
+       this.pag2=[];
+// console.log(names,this.pag1);
+if(namest){
+// this.pag1=this.pag1.language
+for(let i=0;i<this.pag1.length;i++){
+if(this.pag1[i].language==namest){
+this.pag2.push(this.pag1[i]);
+
+}else if(namest=='全部'){
+  this.pag2.push(this.pag1[i]);
+  // console.log(1);
+  
+}
+
+}  
+}
+     }
+
     },
-    components:{}
+    components:{},
+     async created(){
+        let { data } = await this.$axios.get("/goods",{
+        params:{name:'goods'}
+    });
+    // console.log("data:", data.data);
+    this.pag1=data.data.slice(0,16);this.names('全部');
+    //  this.pag2=data.data.slice(0,16);
+  },
 
 };
 </script>
@@ -261,10 +207,13 @@ input {
   width: 100%;
   height: 100%;
 }
+.pageSearch{
+  position: fixed;top: 0;left: 0;
+}
 .pageSearch,
 .searchBox {
   display: flex;
-  align-items: center;
+  align-items: center;box-sizing: border-box;
 }
 .pageSearch {
   height: 43.98px;
@@ -327,15 +276,14 @@ span {
     width: 69.97px;
     height: 89.97px;
 }
-
 .course_tab .course_p{
-    background: url(../assets/img/project.png) 50% no-repeat;
+    background: url(../assets/img/open.png) 50% no-repeat;
     background-size: contain;
     width: 69.97px;
     height: 89.97px;
 }
 .course_tab .course_o{
-    background: url(../assets/img/open.png) 50% no-repeat;
+    background: url(../assets/img/project.png) 50% no-repeat;
     background-size: contain;
     width: 69.97px;
     height: 89.97px;

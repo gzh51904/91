@@ -11,7 +11,7 @@ import Mine from '../pages/Mine.vue';
 import Login from '../pages/Login.vue';
 import Register from '../pages/Register.vue';
 import Page from '../pages/Page.vue';
-
+import Input from '../pages/Input.vue';
 // 3. 实例化router并配置参数
 let router = new VueRouter({
     // 路由页面信息配置
@@ -21,6 +21,12 @@ let router = new VueRouter({
             path: '/home',
             component: Home,
         },
+        {
+            name:'Input',
+            path:'/input',
+            component:Input
+        },
+
         {
             name: 'Discover',
             path: '/discover',

@@ -1,11 +1,11 @@
 <template>
   <div class="course_detail">
-    <header class="mint-header headNav" style="height:43.98px;line-height:43.98px">
+    <!-- <header class="mint-header headNav" style="height:43.98px;line-height:43.98px">
       <div class="mint-header-button is-left">
         <button class="mint-button mint-button-normal">
           <span class="mint-buton-icon">
-            <i class="iconfont icon-arrowleft">
-              <img src="../assets/img/zjt.png" alt />
+            <i class="iconfont icon-arrowleft" @click="tiaox1">
+              <img :src="img.img1"  />
             </i>
           </span>
         </button>
@@ -16,15 +16,19 @@
           <div class="course_-detail_box_m_header">
             <div class="course_detail_box_m_header-slot">
               <i class="iconfont icon-icon_collect_nor">
-                <img src="../assets/img/sc.png" alt />
+                <img :src="img.img2"  />
               </i>
               <span>收藏</span>
             </div>
           </div>
         </div>
       </div>
+    </header> -->
+    <header class="box22">
+      <img :src="img.img1"  @click="tiaox1" /><h2>课程详情</h2> <div><img :src="img.img2"  /><span>收藏</span></div>
     </header>
-    <div class="course_detail_box_m_bg padding_16px" v-for="item in listpage" :key="item.vacation">
+    <div class="course_detail_box_m_bg padding_16px" v-for="item in listpage1" 
+    :key="item.vacation">
       <div class="detail_title_box">
         <div class="title_left">
           <div class="detail_title">
@@ -50,11 +54,11 @@
         <li>试听</li>
       </ul>
       <div class="teacher_img">
-        <div class="tli">
+        <!-- <div class="tli">
           <img :src="item.imgurl" alt />
           <p title="李妞妞" class="name">{{item.teacherNames}}</p>
           <p>主讲</p>
-        </div>
+        </div> -->
         <div class="tli">
           <img :src="item.imgtupian" alt />
           <p title="廖美琦" class="name">{{item.zhujiaoNames}}</p>
@@ -63,7 +67,8 @@
       </div>
     </div>
     <div class="vspace"></div>
-    <div class="course_detail_box_m_bg padding_16px" style="padding:15.996px" v-for="item in listpage">
+    <div class="course_detail_box_m_bg padding_16px" 
+    style="padding:15.996px" v-for="item in listpage1" :key="item.id">
       <p class="detail_explain">
         <span>限时销售：</span>
         {{item.deadlineStr}}停售
@@ -77,9 +82,9 @@
       </div>
       <p class="detail_explain light">
         <span>优惠信息</span>
-        <i>{{item.youhui}}</i>
-        <i>{{item.xilie}}</i>
-        <i>{{item.more}}</i>
+        <i>9.5折优惠</i>
+        <i>{{item.vacation}}{{item.language}}联报更优惠</i>
+        <i>跨课多优惠</i>
       </p>
     </div>
     <div class="vspace" style="background: #fbfbfb;"></div>
@@ -90,11 +95,11 @@
     </div>
     <div class="fixed_wrap">
       <div class="cart_btn_bar">
-        <span class="new">¥1389.5</span>
-        <span class="old">¥1462.5</span>
+        <span class="new">{{ret1}}</span>
+        <span class="old">¥{{ret2}}</span>
         <div class="btn">
           <div class="row">
-            <div class="origin">加入购物车</div>
+            <div class="origin" @click='jiaru'>加入购物车</div>
             <div class="red">立即报名</div>
           </div>
         </div>
@@ -107,27 +112,73 @@
 export default {
   data() {
     return {
-      listpage: [
-        {
-          vacation: "暑期",
-          language: "语文",
-          courseDesc:"二升三读写高效学习班(暑假)",
-          class:"共15讲",
-          timeremark: "2019-07-13至2019-07-28  每日13:30-15:00，休7月21日",
-          plan: "二升三年级学员",
-          imgurl: require("../assets/img/teacher.png"),
-          teacherNames:"李妞妞",
-          imgtupian:require("../assets/img/zhujiao.png"),
-          zhujiaoNames:"廖美琦",
-          deadlineStr: "2019-08-31 23:59",
-          ziliao:"精美纸质讲义",
-          youhui:"9.5折优惠",
-          xilie:"语文暑秋联报更优惠",
-          more:"跨课多优惠",
-        }
-      ]
+      img:{
+img1: require('../assets/img/zjt.png'),
+img2: require('../assets/img/sc.png'),
+      },
+     
+      listpage1:[],
+      ret1:0,
+      ret2:0
     };
+  },
+  methods:{
+    tiaox1(){this.$router.push('/list');},
+    jiaru(){
+         let {commit,state} = this.$store
+            let {goodslist} = state;
+             let {id} = this.$route.params;
+            // console.log(goodslist,id);
+            
+            // 判断当前商品是否已经存在购物车中
+            // 存在：数量+1
+            // 不存在：添加（数量为1）
+            let current = goodslist.filter(item=>item.id==id)[0];
+            if(current){
+               alert("已经加入购物车")
+            }else{
+              let s=this.listpage1[0]
+              // console.log(s);
+              
+                commit('add',s);
+                commit('changeQty',{id,qty:1})
+     
+            }
+        //  this.$router.push({params:{id}});
+        // console.log('length:',this.$store.state.goodslist);
+        
+    },
+  },
+   async created(){
+      //  console.log('length:',this.$store.state.goodslist);
+    //   获取传入id
+    let {id} = this.$route.params;
+// console.log(id);
+
+    // 发起ajax请求，获取商品信息
+     let {data} = await this.$axios.get('/goods/'+id,{params:{name:'user'}});
+    let ids=id;
+let resgg=data.data;
+this.listpage1=data.data.map(item=>{
+  
+      
+      item.imgtupian = require('../assets/img/' + item.imgtupian);
+      return item;
+    //   console.log(item.imgtupian);
+    });  ;
+    //  console.log(data.data)
+for(let i=0;i<resgg.length;i++){
+
+  if(resgg[i].id==ids){
+    // this.listpage1.push(resgg[i]);
+    this.ret1=resgg[i].oldPrice
+    this.ret2=resgg[i].payable
   }
+   
+} 
+// console.log(this.listpage1,this.ret1);
+    //  this.info = data.data[0]
+    },
 };
 </script>
 
@@ -157,16 +208,37 @@ input {
   height: 43.98px;
   align-items: center;
   justify-content: space-between;
-  padding: 0 15.996px;
+  padding: 0 15px;
   color: #181818;
   background: #fff;
 }
 .mint-header {
   line-height: 1;
+  /* display: none; */
   padding: 0 10px;
   position: relative;
   text-align: center;
   word-spacing: normal;
+}
+.box22{
+  width: 100%;height: 50px;background: #ffffff;box-sizing: border-box;padding: 0 5px;
+}
+.box22>img{
+  float: left;width: 15px;height: 15px;margin-top: 17.5px;
+}
+.box22>h2{
+float: left;font-size: 18px;line-height: 50px;text-align: center;display: inline-block;width: calc(100% - 62px );
+}
+
+.box22>div{
+  float: left;width: 45px;height: 100%;background: #ffffff;
+}
+.box22>div>img{
+width: 15px;height: 15px;margin-left: 15px;margin-top: 5px;
+}
+.box22>div>span{
+  display: block;width: 100%;text-align: center;
+font-size: 12px;
 }
 .mint-header-button {
   flex: 0.5;
@@ -176,7 +248,7 @@ input {
 }
 .mint-header > .mint-header-title {
   float: left;
-  margin-left: 35%;
+  font-size: 16px;display: inline-block;width: calc(100% - 100px);
 }
 .course_detail_box_m_header {
   display: flex;
@@ -187,7 +259,7 @@ input {
   display: inline-block;
 }
 .iconfont {
-  font-size: 16px;
+  font-size: 16px;float: left;
 }
 .padding_16px {
   padding: 0 15.996px;
